@@ -41,7 +41,7 @@ const Comment = ({ comment }) => {
 
   useEffect(() => {
     const fetchComment = async () => {
-      const res = await axios.get(`/users/find/${comment.userId}`,{ withCredentials: true });
+      const res = await axios.get(`https://tubeverse-backend.onrender.com/api/users/find/${comment.userId}`,{ withCredentials: true });
       setChannel(res.data)
     };
     fetchComment();

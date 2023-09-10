@@ -39,7 +39,7 @@ const Comments = ({ videoId }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await axios.get(`/comments/${videoId}`, {
+        const res = await axios.get(`https://tubeverse-backend.onrender.com/api/comments/${videoId}`, {
           withCredentials: true,
         });
         setComments(res.data);
@@ -57,7 +57,7 @@ const Comments = ({ videoId }) => {
   const submitComment = async () => {
     try {
       const res = await axios.post(
-        `/comments/${videoId}`,
+        `https://tubeverse-backend.onrender.com/api/comments/${videoId}`,
         {
           text: newCommentText,
         },

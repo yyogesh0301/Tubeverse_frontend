@@ -18,7 +18,7 @@ const Search = () => {
 
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await axios.get(`/videos/search${query}`,{ withCredentials: true });
+      const res = await axios.get(`https://tubeverse-backend.onrender.com/api/videos/search${query}`,{ withCredentials: true });
       setVideos(res.data);
     };
     fetchVideos();

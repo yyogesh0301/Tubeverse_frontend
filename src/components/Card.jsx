@@ -60,7 +60,7 @@ const Card = ({ type ,video}) => {
 
   useEffect(() => {
     const fetchChannel = async () => {
-      const res = await axios.get(`/users/find/${video.userId}`,{ withCredentials: true });
+      const res = await axios.get(`https://tubeverse-backend.onrender.com/api/users/find/${video.userId}`,{ withCredentials: true });
       setChannel(res.data);
     };
     fetchChannel();
