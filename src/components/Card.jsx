@@ -70,7 +70,7 @@ const Card = ({ type ,video}) => {
 
   useEffect(() => {
  
-    const videoCreatedAt = new Date(video.createdAt);
+    const videoCreatedAt = new Date(video?.createdAt);
     const currentTime = new Date();
 
     const timeDifference = currentTime - videoCreatedAt;

@@ -150,7 +150,7 @@ const handleDislike = async () => {
 };
 
 
-const videoCreatedAt = new Date(currentVideo.createdAt);
+const videoCreatedAt = new Date(currentVideo?.createdAt);
 const currentTime = new Date();
 
 const timeDifference = currentTime - videoCreatedAt;
