@@ -4,6 +4,7 @@ import styled from "styled-components";
 import axios from "axios";
 import usericon from '../img/usericon.png';
 
+
 const Container = styled.div`
   width: ${(props) => (props.type !== "sm" ? "360px" : null)};
   margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
