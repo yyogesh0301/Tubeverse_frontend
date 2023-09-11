@@ -79,7 +79,7 @@ const SignIn = () => {
     e.preventDefault();
     dispatch(loginStart())
     try {
-      const res = await axios.post("https://tubeverse-backend.onrender.com/api/auth/signin", { name, password },{withCredentials: true,});
+      const res = await axios.post("https://tubeverse-backend.onrender.com/api/auth/signin", { name, password });
       navigate('/');
       dispatch(loginSuccess(res.data));
     } catch (err) {
@@ -93,7 +93,7 @@ const SignIn = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await axios.post('https://tubeverse-backend.onrender.com/api/auth/signup', { name, email, password },{withCredentials: true,});
+      const res = await axios.post('https://tubeverse-backend.onrender.com/api/auth/signup', { name, email, password });
       navigate('/');
       alert("User Registered ");
        // Redirect to login with success message
@@ -113,7 +113,7 @@ const SignIn = () => {
             name: result.user.displayName,
             email: result.user.email,
             img: result.user.photoURL,
-          },{withCredentials: true,})
+          })
           .then((res) => {
             console.log(res)
             dispatch(loginSuccess(res.data));
