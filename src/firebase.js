@@ -3,7 +3,7 @@ import {getAuth,GoogleAuthProvider} from "firebase/auth"
 
 
 const firebaseConfig = {
-  apiKey: "process.env.REACT_APP_KEY",
+  apiKey: process.env.REACT_APP_KEY,
   authDomain: "video2-70b56.firebaseapp.com",
   projectId: "video2-70b56",
   storageBucket: "video2-70b56.appspot.com",

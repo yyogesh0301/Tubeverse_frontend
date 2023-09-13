@@ -19,7 +19,9 @@ const Home = ({type}) => {
   const [videos, setVideos] = useState([]);
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await axios.get(`https://tubeverse-backend.onrender.com/api/videos/${type}`);
+      const res = await axios.get(`https://tubeverse-backend.onrender.com/api/videos/${type}`,{
+        withCredentials: true,
+      });
       setVideos(res.data);
     };
     fetchVideos();
