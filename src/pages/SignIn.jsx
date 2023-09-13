@@ -79,7 +79,9 @@ const SignIn = () => {
     e.preventDefault();
     dispatch(loginStart())
     try {
-      const res = await axios.post("https://tubeverse-backend.onrender.com/api/auth/signin", { name, password });
+      const res = await axios.post("https://tubeverse-backend.onrender.com/api/auth/signin", { name, password },{
+        withCredentials: true,
+      });
       navigate('/');
       dispatch(loginSuccess(res.data));
     } catch (err) {
