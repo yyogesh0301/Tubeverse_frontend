@@ -95,7 +95,9 @@ const SignIn = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await axios.post('https://tubeverse-backend.onrender.com/api/auth/signup', { name, email, password });
+      const res = await axios.post('https://tubeverse-backend.onrender.com/api/auth/signup', { name, email, password },{
+        withCredentials: true,
+      });
       navigate('/');
       alert("User Registered ");
        // Redirect to login with success message
@@ -115,6 +117,9 @@ const SignIn = () => {
             name: result.user.displayName,
             email: result.user.email,
             img: result.user.photoURL,
+          },
+          {
+            withCredentials: true,
           })
           .then((res) => {
             console.log(res)

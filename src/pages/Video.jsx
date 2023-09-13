@@ -129,9 +129,13 @@ const [channel, setChannel] = useState({});
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const videoRes = await axios.get(`https://tubeverse-backend.onrender.com/api/videos/find/${path}`);
+      const videoRes = await axios.get(`https://tubeverse-backend.onrender.com/api/videos/find/${path}`,{
+        withCredentials: true
+      });
       const channelRes = await axios.get(
-        `https://tubeverse-backend.onrender.com/api/users/find/${videoRes.data.userId}`
+        `https://tubeverse-backend.onrender.com/api/users/find/${videoRes.data.userId}`,{
+          withCredentials: true
+        }
       );
       setChannel(channelRes.data);
       dispatch(fetchSuccess(videoRes.data));
@@ -141,11 +145,15 @@ useEffect(() => {
 }, [path, dispatch]);
 
 const handleLike = async () => {
-  await axios.put(`https://tubeverse-backend.onrender.com/api/users/like/${currentVideo?._id}`);
+  await axios.put(`https://tubeverse-backend.onrender.com/api/users/like/${currentVideo?._id}`,{},{
+    withCredentials: true,
+  });
   dispatch(like(currentUser._id));
 };
 const handleDislike = async () => {
-  await axios.put(`https://tubeverse-backend.onrender.com/api/users/dislike/${currentVideo?._id}`);
+  await axios.put(`https://tubeverse-backend.onrender.com/api/users/dislike/${currentVideo?._id}`,{},{
+    withCredentials: true,
+  });
   dispatch(dislike(currentUser._id));
 };
 
