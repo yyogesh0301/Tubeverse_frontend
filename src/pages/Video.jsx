@@ -174,9 +174,12 @@ if (secondsAgo < 60) {
 
 
 const handleSub = async () => {
+  const config = {
+    withCredentials: true,
+  }
   currentUser.subscribedUsers.includes(channel._id)
-    ? await axios.put(`https://tubeverse-backend.onrender.com/api/users/unsub/${channel._id}`)
-    : await axios.put(`https://tubeverse-backend.onrender.com/api/users/sub/${channel._id}`);
+    ? await axios.put(`https://tubeverse-backend.onrender.com/api/users/unsub/${channel._id}`, config)
+    : await axios.put(`https://tubeverse-backend.onrender.com/api/users/sub/${channel._id}`,config);
   dispatch(subscription(channel._id));
 };
 
