@@ -8,7 +8,7 @@ import axios from "axios";
 
 const Container = styled.div`
   display: flex;
-  justify-content: start;
+  justify-content: ${(props) => (props.type === "sm" ? "start" : "space-between")};
   flex-wrap: wrap;
 
 `;
