@@ -6,9 +6,10 @@ import usericon from '../img/usericon.png';
 
 
 const Container = styled.div`
-  width: ${(props) => (props.type !== "sm" ? "360px" : null)};
+  width: ${(props) => (props.type !== "sm" ? "355px" : null)};
   margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
   cursor: pointer;
+  margin right :18px;
   display: ${(props) => (props.type === "sm" ? "flex" : null)};
   gap: 10px;
 
