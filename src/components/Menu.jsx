@@ -156,20 +156,12 @@ const Menu = ({ darkMode, setDarkMode }) => {
           Sports
         </Item>
         <Item>
-          <SportsEsportsOutlinedIcon />
-          Gaming
-        </Item>
-        <Item>
           <MovieOutlinedIcon />
           Movies
         </Item>
         <Item>
           <ArticleOutlinedIcon />
           News
-        </Item>
-        <Item>
-          <LiveTvOutlinedIcon />
-          Live
         </Item>
         <Hr />
         <Item>

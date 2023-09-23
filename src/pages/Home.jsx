@@ -13,8 +13,6 @@ const Container = styled.div`
 
 `;
 
-
-
 const Home = ({type}) => {
   const [videos, setVideos] = useState([]);
   useEffect(() => {
@@ -34,7 +32,6 @@ const Home = ({type}) => {
        {videos.map((video) => (
         <Card key ={video._id} video={video}/>
       ))}
-      
     </Container>
   );
 };
