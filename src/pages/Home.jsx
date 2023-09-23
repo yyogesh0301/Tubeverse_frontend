@@ -8,7 +8,7 @@ import axios from "axios";
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   flex-wrap: wrap;
 
 `;
