@@ -8,8 +8,8 @@ import Card from "../components/Card";
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 10px;
+  justify-content: start;
+  gap: 0px;
 `;
 
 const Search = () => {
