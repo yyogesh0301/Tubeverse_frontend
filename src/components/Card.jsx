@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import usericon from '../img/usericon.png';
-
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   width: ${(props) => (props.type !== "sm" ? "355px" : null)};
@@ -56,8 +57,9 @@ const Info = styled.div`
   color: ${({ theme }) => theme.textSoft};
 `;
 
-const Card = ({ type ,video}) => {
+const Card = ({ type ,video,currentUser}) => {
   const [channel, setChannel] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchChannel = async () => {
@@ -68,6 +70,7 @@ const Card = ({ type ,video}) => {
   }, [video.userId]);
 
   const [timeAgo, setTimeAgo] = useState('');
+const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
  
@@ -91,9 +94,17 @@ const Card = ({ type ,video}) => {
     }
   }, [video.createdAt]);
 
+const handleVideoClick = () => {
+    if (!currentUser) {
+      alert("SignIN to Watch the Video");
+    } else {
+      navigate(`/video/${video._id}`);
+    }
+  };
+
   return (
-    <Link to={`/video/${video._id}`} style={{ textDecoration: "none" }}>
-      <Container type={type}>
+    
+      <Container type={type} onClick={handleVideoClick}>
         <Image
           type={type}
           src={video?.imgUrl}
@@ -110,7 +121,7 @@ const Card = ({ type ,video}) => {
           </Texts>
         </Details>
       </Container>
-    </Link>
+    
   );
 };
 
