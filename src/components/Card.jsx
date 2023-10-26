@@ -85,10 +85,14 @@ const Card = ({ type ,video}) => {
     } else if (secondsAgo < 86400) {
       const hoursAgo = Math.floor(secondsAgo / 3600);
       setTimeAgo(`${hoursAgo} hours ago`);
-    } else {
+    } else if (secondsAgo < 2592000) { 
       const daysAgo = Math.floor(secondsAgo / 86400);
       setTimeAgo(`${daysAgo} days ago`);
+    } else {
+      const monthsAgo = Math.floor(secondsAgo / 2592000); 
+      setTimeAgo(`${monthsAgo} months ago`);
     }
+    
   }, [video.createdAt]);
 
   return (

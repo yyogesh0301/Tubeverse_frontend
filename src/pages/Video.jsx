@@ -174,10 +174,14 @@ if (secondsAgo < 60) {
 } else if (secondsAgo < 86400) {
   const hoursAgo = Math.floor(secondsAgo / 3600);
   timeAgoText = `${hoursAgo} hours`;
-} else {
+} else if (secondsAgo < 2592000) { 
   const daysAgo = Math.floor(secondsAgo / 86400);
   timeAgoText = `${daysAgo} days`;
+} else {
+  const monthsAgo = Math.floor(secondsAgo / 2592000); 
+  timeAgoText = `${monthsAgo} months`;
 }
+
 
 
 
