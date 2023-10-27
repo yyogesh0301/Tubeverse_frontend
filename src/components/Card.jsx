@@ -107,8 +107,8 @@ const Card = ({ type ,video}) => {
 
   return (
 
-      <div  onClick={handleCardClick}>
-    
+    <div onClick={handleCardClick}>
+      {isLoggedIn ? (
     <Link to={`/video/${video._id}`} style={{ textDecoration: "none" }}>
       <Container type={type}>
         <Image
@@ -127,7 +127,7 @@ const Card = ({ type ,video}) => {
           </Texts>
         </Details>
       </Container>
-    </Link>
+    </Link>) :null}
       </div>
   );
 };
