@@ -151,10 +151,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
           <LibraryMusicOutlinedIcon />
           Music
         </Item>
-        <Item>
-          <SportsBasketballOutlinedIcon />
-          Sports
-        </Item>
+        
         <Item>
           <MovieOutlinedIcon />
           Movies

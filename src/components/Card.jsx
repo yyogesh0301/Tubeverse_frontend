@@ -6,7 +6,7 @@ import usericon from '../img/usericon.png';
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
-  width: ${(props) => (props.type !== "sm" ? "355px" : null)};
+  width: ${(props) => (props.type !== "sm" ? "350px" : null)};
   margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
   cursor: pointer;
   margin-right :18px;
@@ -74,7 +74,6 @@ const Card = ({ type ,video}) => {
 
   const handleCardClick = () => {
     if (!isLoggedIn) {
-      // Display a popup or perform any action you want here.
       alert("Please login to watch videos");
     }
   };
