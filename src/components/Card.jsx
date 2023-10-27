@@ -127,7 +127,25 @@ const Card = ({ type ,video}) => {
           </Texts>
         </Details>
       </Container>
-    </Link>) :null}
+    </Link>) :
+    
+    <Container type={type}>
+        <Image
+          type={type}
+          src={video?.imgUrl}
+        />
+        <Details type={type}>
+          <ChannelImage
+            type={type}
+            src={channel?.img || usericon}
+          />
+          <Texts>
+            <Title>{video.title}</Title>
+            <ChannelName>{channel?.name}</ChannelName>
+            <Info>{video.views} views • {timeAgo}</Info>
+          </Texts>
+        </Details>
+      </Container>}
       </div>
   );
 };
