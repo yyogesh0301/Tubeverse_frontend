@@ -59,10 +59,7 @@ const Info = styled.div`
 const Card = ({ type ,video}) => {
   const [channel, setChannel] = useState({});
 
-  const [showLoginMessage, setShowLoginMessage] = useState(false); // State for showing the login message
-
-  // Access the currentUser state from Redux
-  const currentUser = useSelector((state) => state.user.currentUser);
+ 
 
   useEffect(() => {
     const fetchChannel = async () => {
@@ -73,14 +70,15 @@ const Card = ({ type ,video}) => {
   }, [video.userId]);
 
   const [timeAgo, setTimeAgo] = useState('');
+  const isLoggedIn = useSelector((state) => state.user.currentUser !== null);
 
-
-  const handleVideoClick = () => {
-    // Check if a user is logged in (currentUser exists in Redux state)
-    if (!currentUser) {
-      setShowLoginMessage(true); // Show the login message if not logged in
+  const handleCardClick = () => {
+    if (!isLoggedIn) {
+      // Display a popup or perform any action you want here.
+      alert("Please login to watch videos");
     }
   };
+  
   useEffect(() => {
  
     const videoCreatedAt = new Date(video?.createdAt);
@@ -108,7 +106,9 @@ const Card = ({ type ,video}) => {
   }, [video.createdAt]);
 
   return (
-    <div>
+
+      <div  onClick={handleCardClick}>
+    
     <Link to={`/video/${video._id}`} style={{ textDecoration: "none" }}>
       <Container type={type}>
         <Image
@@ -128,14 +128,6 @@ const Card = ({ type ,video}) => {
         </Details>
       </Container>
     </Link>
-    {showLoginMessage && (
-        <div style={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
-          <div>
-            Please login to watch videos.
-            <button onClick={() => setShowLoginMessage(false)}>Close</button>
-          </div>
-        </div>
-      )}
       </div>
   );
 };
