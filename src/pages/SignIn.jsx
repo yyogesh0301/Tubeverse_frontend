@@ -2,45 +2,72 @@ import axios from "axios";
 import React,{useState} from "react";
 import { useDispatch } from "react-redux";
 import { loginStart,loginFailure, loginSuccess } from "../redux/userSlice";
-import styled from "styled-components";
+import styled ,{ createGlobalStyle }from "styled-components";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
+import { RiLockPasswordLine, RiUserLine, RiMailLine } from "react-icons/ri";
+import reset from "styled-reset";
+
+const GlobalStyle = createGlobalStyle`
+  ${reset}
+  body {
+    font-family: 'Arial', sans-serif;
+  }
+`;
+
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 56px);
-  color: ${({ theme }) => theme.text};
+  height: 100vh;
+  background-color: #f0f0f0;
 `;
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.bgLighter};
-  border: 1px solid ${({ theme }) => theme.soft};
-  padding: 20px 50px;
-  gap: 10px;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
 const Title = styled.h1`
   font-size: 24px;
+  margin-bottom: 10px;
 `;
 
 const SubTitle = styled.h2`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 300;
+  margin-bottom: 20px;
+`;
+
+const InputWrapper = styled.div`
+  position: relative;
+  margin-bottom: 10px;
+`;
+
+const InputIcon = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  color: #777;
 `;
 
 const Input = styled.input`
-  border: 1px solid ${({ theme }) => theme.soft};
+  border: 1px solid #ccc;
   border-radius: 3px;
   padding: 10px;
-  background-color: transparent;
+  padding-left: 35px;
+  background-color: #fff;
   width: 100%;
-  color: ${({ theme }) => theme.text};
+  color: #333;
 `;
 
 const Button = styled.button`
@@ -49,8 +76,24 @@ const Button = styled.button`
   padding: 10px 20px;
   font-weight: 500;
   cursor: pointer;
-  background-color: ${({ theme }) => theme.soft};
-  color: ${({ theme }) => theme.textSoft};
+  background-color: #3498db;
+  color: #fff;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #2980b9;
+  }
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
+const GoogleIcon = styled(FaGoogle)`
+  font-size: 24px;
+  margin-right: 10px;
 `;
 
 const More = styled.div`
@@ -134,39 +177,72 @@ const SignIn = () => {
   };
 
   return (
-    <Container>
-    <Wrapper>
-      <Title>Sign in</Title>
-      <SubTitle>to continue to TubeVerse</SubTitle>
-      <Input
-        placeholder="username"
-        onChange={(e) => setName(e.target.value)}
-      />
-      <Input
-        type="password"
-        placeholder="password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <Button onClick={handleLogin}>Sign in</Button>
-      <Title>or</Title>
-      <Button onClick={signInWithGoogle}>Signin with Google</Button>
-
-      <Title>or</Title>
-      <Input
-        placeholder="username"
-        onChange={(e) => setName(e.target.value)}
-      />
-      <Input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
-      <Input
-        type="password"
-        placeholder="password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <Button  onClick={handleSignup}>Sign up</Button>
-    </Wrapper>
-    
-  
-  </Container>
+    <>
+      <GlobalStyle />
+      <Container>
+        <Wrapper>
+          <Title>Sign in</Title>
+          <SubTitle>to continue to TubeVerse</SubTitle>
+          <InputWrapper>
+            <InputIcon>
+              <RiUserLine />
+            </InputIcon>
+            <Input
+              placeholder="Username"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <InputIcon>
+              <RiLockPasswordLine />
+            </InputIcon>
+            <Input
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </InputWrapper>
+          <Button onClick={handleLogin}>Sign in</Button>
+          <Title>or</Title>
+          <Button onClick={signInWithGoogle}>
+            <IconWrapper>
+              <GoogleIcon />
+              Sign in with Google
+            </IconWrapper>
+          </Button>
+          <Title>or</Title>
+          <InputWrapper>
+            <InputIcon>
+              <RiUserLine />
+            </InputIcon>
+            <Input
+              placeholder="Username"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <InputIcon>
+              <RiMailLine />
+            </InputIcon>
+            <Input
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <InputIcon>
+              <RiLockPasswordLine />
+            </InputIcon>
+            <Input
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </InputWrapper>
+          <Button onClick={handleSignup}>Sign up</Button>
+        </Wrapper>
+      </Container>
+    </>
   );
 };
 

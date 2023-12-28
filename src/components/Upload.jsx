@@ -63,15 +63,33 @@ const Desc = styled.textarea`
   background-color: transparent;
 `;
 const Button = styled.button`
-  border-radius: 3px;
-  border: none;
-  padding: 10px 20px;
-  font-weight: 500;
+  border-radius: 5px;
+  border: 2px solid ${({ theme }) => theme.primary};
+  padding: 12px 24px;
+  font-weight: 600;
   cursor: pointer;
-  background-color: ${({ theme }) => theme.soft};
-  color: ${({ theme }) => theme.textSoft};
-  
+  background-color: ${({ theme }) => theme.secondary};
+  color: ${({ theme }) => theme.text};
+
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.textOnPrimary};
+    border-color: ${({ theme }) => theme.primary};
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.focusOutline};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
 `;
+
 const Label = styled.label`
   font-size: 14px;
 `;

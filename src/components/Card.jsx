@@ -1,5 +1,5 @@
 import React ,{useEffect,useState}from "react";
-import { Link } from "react-router-dom";
+import { Link,useHistory  } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import usericon from '../img/usericon.png';
@@ -71,10 +71,11 @@ const Card = ({ type ,video}) => {
 
   const [timeAgo, setTimeAgo] = useState('');
   const isLoggedIn = useSelector((state) => state.user.currentUser !== null);
-
+  const history = useHistory();
   const handleCardClick = () => {
     if (!isLoggedIn) {
-      alert("Please login to watch videos");
+      //alert("Please login to watch videos");
+      history.push("/signin");
     }
   };
   

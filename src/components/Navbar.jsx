@@ -42,12 +42,12 @@ const Search = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 5px;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 3px;
 `;
 
 const Input = styled.input`
-
+ flex: 1;
   border: none;
   background-color: transparent;
   outline: none;
@@ -136,6 +136,11 @@ const Navbar = () => {
             <Input 
               placeholder="Search"
               onChange={(e) => setQ(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  navigate(`/search?q=${q}`);
+                }
+              }}
             />
              <SearchOutlinedIcon onClick={()=>navigate(`/search?q=${q}`)}/>
           </Search>
