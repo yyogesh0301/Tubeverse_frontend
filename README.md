@@ -2,10 +2,7 @@
 <br>
 
 It is a Video-Sharing Website that provides users with functionalities such as uploading videos, subscribing to channels, interacting with like and dislike features, etc.
-<br>
-Live Website - https://tubeverse.netlify.app/
-<br>
-<i>(Might take a few minutes for the website to load if no one has accessed it recently)</i>
+
 
 <br>  Backend Code - https://github.com/yyogesh0301/Tubeverse_backend
 <br>
